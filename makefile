@@ -14,7 +14,9 @@ recursives: libclassrec.a
 
 recursived: libclassrec.so
 
-loopd: libclassloops.somaindrec: main.o
+loopd: libclassloops.so
+
+maindrec: main.o
 	$(CC) $(FLAGS) -o maindrec main.o ./libclassrec.so -lm
 
 maindloop: main.o
