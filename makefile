@@ -8,8 +8,13 @@ BC_OBJECT=basicClassification.o
 ACL_OBJECT=advancedClassificationLoop.o
 ACR_OBJECT=advancedClassificationRecursion.o
 
-all: libclassloops.so libclassrec.so libclassloops.a libclassrec.a maindrec maindloop mains
-maindrec: main.o
+loops: libclassloops.a
+
+recursives: libclassrec.a
+
+recursived: libclassrec.so
+
+loopd: libclassloops.somaindrec: main.o
 	$(CC) $(FLAGS) -o maindrec main.o ./libclassrec.so -lm
 
 maindloop: main.o
@@ -17,6 +22,8 @@ maindloop: main.o
 
 mains: main.o libclassrec.a
 	$(CC) $(FLAGS) -o mains main.o libclassrec.a -lm
+
+all: libclassloops.so libclassrec.so libclassloops.a libclassrec.a maindrec maindloop mains
 
 libclassloops.so: $(BC_OBJECT) $(ACL_OBJECT) NumClass.h
 	$(CC) -shared -o libclassloops.so $(BC_OBJECT) $(ACL_OBJECT)
